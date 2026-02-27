@@ -1,0 +1,87 @@
+
+\documentclass[../../../physics-standard_answers_all.tex]{subfiles}
+
+\begin{document}
+
+\setlength{\abovedisplayskip}{2mm}
+\setlength{\belowdisplayskip}{1mm}
+
+\begin{enumerate}
+
+    \item 
+        $ \displaystyle \hspace{1\zw}
+        k_0 = \uwave{\frac{1}{4\pi \varepsilon_0}} \;.
+        $
+        
+    \item
+        この直線を中心軸とする円柱（半径$r$，高さ$\ell$）を考える．
+        電気力線は側面を垂直に貫くから，
+        \begin{align*}
+            E(r) = \frac{\lambda \ell / \varepsilon_0}{2\pi r \ell}
+            = \uwave{\frac{\lambda}{2\pi \varepsilon_0 r}}
+            = \frac{2k_0 \lambda}{r} \;.
+        \end{align*}
+
+    \item 
+        面積$S$の部分に注目すると，電気力線が平面の両側に
+        $ \displaystyle \frac{\sigma S}{\varepsilon_0} \cdot \frac{1}{2}$
+        本ずつ湧き出ることに注意して，
+        \begin{align*}
+            E = \frac{\sigma S/(2\varepsilon_0)}{S} 
+            = \uwave{\frac{\sigma}{2\varepsilon_0}}
+            = 2\pi k_0 \sigma \;.
+        \end{align*}
+
+    \item
+        電気力線は中心から放射状に一様に伸びるから，
+        それに対して垂直な半径$r$の球面で考える．\\
+        \uline{$0<r<a$}の領域では，球殻の内部には電気力線は無いことに留意して，
+        %
+        \begin{align*}
+            E(r) = \uwave{0} \;.
+        \end{align*}
+        %
+        \uline{$r>a$}の領域では，球面全体を貫く電気力線の本数が
+        $ \displaystyle \frac{Q}{\varepsilon_0} $
+        であることに留意して，
+        \begin{align*}
+            E(r) = \frac{Q/\varepsilon_0}{4\pi r^2}
+            = \uwave{\frac{1}{4\pi \varepsilon_0} \frac{Q}{r^2}}
+            = k_0 \frac{Q}{r^2} \;.
+        \end{align*} 
+        
+    \item
+        電気力線は中心から放射状に一様に伸びるから，
+        それに対して垂直な半径$r$の球面で考える．\\
+        \uline{$0<r<a$}の領域では，球面の内部に含まれる電荷
+        $ \displaystyle Q \left( \frac{r}{a} \right)^3 $
+        から湧き出た
+        $ \displaystyle \frac{Q}{\varepsilon_0} \left( \frac{r}{a} \right)^3 $
+        本の電気力線が球面を貫くから，
+        %
+        \begin{align*}
+            E(r) = \frac{\frac{Q}{\varepsilon_0} \left( \frac{r}{a} \right)^3}{4\pi r^2}
+            = \uwave{\frac{1}{4\pi \varepsilon_0} \frac{Q}{a^3} r}
+            = k_0 \frac{Q}{a^3} r \;.
+        \end{align*}
+        %
+        \uline{$r>a$}の領域では，球面を貫く電気力線の本数が
+        $ \displaystyle \frac{Q}{\varepsilon_0} $
+        であることに留意して，
+        %
+        \begin{align*}
+            E(r) = \frac{Q/\varepsilon_0}{4\pi r^2}
+            = \uwave{\frac{1}{4\pi \varepsilon_0} \frac{Q}{r^2}}
+            = k_0 \frac{Q}{r^2} \;.
+        \end{align*}
+
+    \item 　
+        \par {\centering
+            \includegraphics[width=0.9\linewidth]
+            {\subfix{fig/fig_em_ef_03/fig_em_ef_03_06.pdf}}
+        \par}
+        \vspace{0.2\baselineskip}
+
+    \end{enumerate}
+
+\end{document}

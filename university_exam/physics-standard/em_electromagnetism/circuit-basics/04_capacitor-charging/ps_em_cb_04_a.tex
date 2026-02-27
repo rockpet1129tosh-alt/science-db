@@ -1,0 +1,73 @@
+﻿
+\documentclass[../../../physics-standard_answers_all.tex]{subfiles}
+
+\begin{document}
+
+\setlength{\abovedisplayskip}{2mm}
+\setlength{\belowdisplayskip}{1mm}
+
+キルヒホッフ則より，
+    %
+    \begin{align*}
+        V_0 = \frac{Q}{C} + RI \;. \myleader{1.8cm} \text{①}
+    \end{align*}
+    %
+コンデンサの上側極板へ単位時間あたりに流入する電荷が$I$であるから，
+    \begin{align*}
+        I = \dv{Q}{t} \;. \myleader{1.8cm} \text{②}
+    \end{align*}
+    %
+
+\begin{enumerate}
+
+    \item $t=0$直後には$Q=0$であるから，①より，
+        %
+        \begin{align*}
+            I_0 = \frac{V_0}{R} \;.
+        \end{align*}
+        %
+        よって，
+        %
+        \begin{align*}
+            R = \frac{V_0}{I_0}
+            = \frac{5.0 \, \text{V}}{2.0 \, \text{mA}}
+            = \uwave{2.5 \, \text{k}\Omega} \;.
+        \end{align*}
+        %
+        また，充分に時間が経過し，電荷が一定となったときには$I=0$であるから，①より，
+        %
+        \begin{align*}
+            Q_\infty = CV_0 \;.
+        \end{align*}
+        %
+        よって，
+        %
+        \begin{align*}
+            C = \frac{Q_\infty}{V_0}
+            = \frac{15 \, \text{\textmu C}}{5.0 \, \text{V}}
+            = \uwave{3.0 \, \text{\textmu F}} \;.
+        \end{align*}
+
+    \item $Q = kQ_\infty = kCV_0$となったとき，①より，
+        %
+        \begin{align*}
+            V_0 = kV_0 + RI
+            \qquad \text{∴} \; I = \uwave{(1-k) \frac{V_0}{R}} \;.
+        \end{align*}
+
+    \item ①，②より，
+        %
+        \begin{align*}
+            \dv{Q}{t} = - \frac{1}{RC} (Q-CV_0) \;.
+        \end{align*}
+        %
+        よって，
+        %
+        \begin{align*}
+            Q = \uwave{CV_0 \qty( 1 - e^{-t/RC} )} \;,
+            \quad I = \uwave{\frac{V_0}{R} e^{-t/RC}} \;.
+        \end{align*}
+
+\end{enumerate}
+
+\end{document}

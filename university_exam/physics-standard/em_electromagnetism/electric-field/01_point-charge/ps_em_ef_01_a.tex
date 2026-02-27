@@ -1,0 +1,93 @@
+﻿
+\documentclass[../../../physics-standard_answers_all.tex]{subfiles}
+
+\begin{document}
+
+\setlength{\abovedisplayskip}{1mm}
+\setlength{\belowdisplayskip}{1mm}
+
+\begin{enumerate}
+    \item 
+        $ \displaystyle \hspace{1\zw}
+        \begin{aligned}[t]
+            E_x(L,\hspace{1.2mm}L)
+            & = k_0\frac{Q}{L^2} - 
+            k_0\frac{|-Q|}{\left( \sqrt{5}L \right)^2} \cdot \frac{1}{\sqrt{5}} \\ 
+            & = \uwave{\left( 1 - \frac{1}{5\sqrt{5}} \right)\frac{k_0Q}{L^2}}\;.
+        \end{aligned}
+        $
+        %
+        \begin{align*}
+            E_y(L,\hspace{1.2mm}L)
+            = -k_0\frac{|-Q|}{\left( \sqrt{5}L \right)^2} \cdot \frac{2}{\sqrt{5}} 
+            = \uwave{- \frac{2}{5\sqrt{5}} \frac{k_0Q}{L^2}} \;.
+        \end{align*}
+%
+    \item
+        $ \displaystyle \hspace{1\zw}
+        \begin{aligned}[t]
+            E_x(x,\hspace{1.2mm} 0)
+            & = k_0 \frac{Q}{L^2+x^2} \cdot \frac{x}{\sqrt{L^2+x^2}} \\
+            & \quad\: - k_0\frac{|-Q|}{L^2+x^2} \cdot \frac{x}{\sqrt{L^2+x^2}} \\
+            & = \uwave{0}\;.
+        \end{aligned}
+        $
+        \begin{align*}
+            E_y(x,\hspace{1.2mm} 0)
+            & = - k_0 \frac{Q}{L^2+x^2} \cdot \frac{L}{\sqrt{L^2+x^2}} \\
+            & \quad\: - k_0 \frac{|-Q|}{L^2+x^2} \cdot \frac{L}{\sqrt{L^2+x^2}} \\
+            & = \uwave{- \frac{2k_0QL}{\left(L^2+x^2\right)^{3/2}}}\;. 
+        \end{align*}
+        %
+        \begin{align*}
+            \phi(x,\hspace{1.2mm}0) = k_0\frac{Q}{\sqrt{L^2+x^2}}
+            + k_0\frac{-Q}{\sqrt{L^2+x^2}} = \uwave{0} \;.
+        \end{align*}
+%
+    \item まず，
+        \begin{align*}
+        E_x(0,\hspace{1.2mm}y) = \uwave{0}
+        \end{align*}
+        %
+        は明らか．\uline{$y > L$}では，
+        %
+        \begin{align*}
+            E_y(0,\hspace{1.2mm}y) =
+            k_0 \frac{Q}{\left(y-L\right)^2} - k_0 \frac{|-Q|}{\left(y+L\right)^2}
+            = \uwave{\frac{4k_0QLy}{\left(y^2-L^2\right)^2}} \;.
+        \end{align*}
+        %  
+        \uline{$-L < y < L$}では，
+        %
+        \begin{align*}
+            E_y(0,\hspace{1.2mm}y)
+            & = -k_0 \frac{Q}{\left(y-L\right)^2} - k_0 \frac{|-Q|}{\left(y+L\right)^2} \\
+            & = \uwave{\frac{2k_0Q\left(y^2+L^2\right)}{\left(L^2 - y^2\right)^2}} \;.
+        \end{align*}
+        %
+        \uline{$y < -L$}では，
+        %
+        \begin{align*}
+            E_y(0,\hspace{1.2mm}y)
+            & = -k_0 \frac{Q}{\left(y-L\right)^2} + k_0 \frac{|-Q|}{\left(y+L\right)^2} \\
+            & = \uwave{- \frac{4k_0QLy}{\left(y^2-L^2\right)^2}} \;.
+        \end{align*}
+        %
+        また，
+        %
+        \begin{align*}
+            \phi(0,\hspace{1.2mm}y)
+            & = k_0 \frac{Q}{|y-L|} + k_0 \frac{-Q}{|y+L|} \\
+            & = \uwave{k_0Q \left( \frac{1}{|y-L|} - \frac{1}{|y+L|} \right)} \;.
+        \end{align*}
+%
+    \item 力学的エネルギー保存則より，
+        %
+        \begin{align*}
+            \frac{1}{2}mv_\infty ^2 = q \phi(0,\hspace{1.2mm} 2L)
+            \qquad \text{∴} \;\; v_\infty = \uwave{\sqrt{\frac{4k_0Qq}{3mL}}} \;.
+        \end{align*}
+        %
+\end{enumerate}
+
+\end{document}
