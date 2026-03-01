@@ -3,7 +3,7 @@
 
 \usepackage{tikz}
 
-\usetikzlibrary{calc, intersections}
+\usetikzlibrary{calc,intersections}
 
 \usepackage{amsmath}
 \usepackage{luatexja}
@@ -62,7 +62,7 @@
             \ifx\Pint\k\undefined\else
                 % let構文で座標を抽出して直角記号を描画
                 \draw [thin] let \p1 = (Pint\k), \n1 = {atan2(\x1, \y1)} in 
-                    [shift={(Pint\k)}, rotate=\n1] (0.15,0) -- (0.15,0.15) -- (0,0.15);
+                    (Pint\k) [shift={(Pint\k)}, rotate=\n1] (0.15,0) -- (0.15,0.15) -- (0,0.15);
             \fi
         \fi
     }

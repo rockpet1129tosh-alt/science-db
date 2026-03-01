@@ -3,7 +3,7 @@
 
 \usepackage{tikz}
 
-\usetikzlibrary{calc, intersections}
+\usetikzlibrary{calc,intersections}
 
 \usepackage{amsmath}
 \usepackage{luatexja}
@@ -60,7 +60,7 @@
             \ifx\Pint\k\undefined\else
                 % 記号が等電位線と直交するように回転
                 \draw [thin] let \p1 = (Pint\k), \n1 = {atan2(\y1, \x1)} in 
-                    [shift={(Pint\k)}, rotate={90+\n1}] (0.15,0) -- (0.15,0.15) -- (0,0.15);
+                    (Pint\k) [shift={(Pint\k)}, rotate={90+\n1}] (0.15,0) -- (0.15,0.15) -- (0,0.15);
             \fi
         \fi
     }

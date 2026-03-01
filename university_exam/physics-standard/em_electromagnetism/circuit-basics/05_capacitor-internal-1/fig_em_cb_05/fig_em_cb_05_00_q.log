@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.2.8)  28 FEB 2026 08:17
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.2.8)  1 MAR 2026 15:14
  restricted system commands enabled.
 **fig_em_cb_05_00_q.tex
 (./fig_em_cb_05_00_q.tex
@@ -405,22 +405,6 @@ File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 brarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarypatterns.code.tex
-File: tikzlibrarypatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.t
-ex
-File: pgflibrarypatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-braryangles.code.tex
-File: tikzlibraryangles.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-braryquotes.code.tex
-File: tikzlibraryquotes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-)
 (c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.cod
 e.tex
 File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
@@ -428,15 +412,14 @@ File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfarrowlength=\dimen257
 \pgfarrowwidth=\dimen258
 \pgfarrowlinewidth=\dimen259
-)
+) (c:/texlive/2025/texmf-dist/tex/latex/circuitikz/circuitikz.sty
+Package: circuitikz 2026/02/04{} The CircuiTikz circuit drawing package version
+ 1.8.5
+
 (c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
 brarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
-(c:/texlive/2025/texmf-dist/tex/latex/circuitikz/circuitikz.sty
-Package: circuitikz 2026/02/04{} The CircuiTikz circuit drawing package version
- 1.8.5
-
 (c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
 brarybending.code.tex
 File: tikzlibrarybending.code.tex 2025-08-29 v3.1.11a (3.1.11a)
@@ -503,9 +486,9 @@ braryfpu.code.tex
 File: l3backend-luatex.def 2025-10-09 L3 backend support: PDF output (LuaTeX)
 \l__color_backend_stack_int=\count310
 Inserting `l3color' in `luaotfload.parse_color'.)
-No file fig_em_cb_05_00_q.aux.
-
+(./fig_em_cb_05_00_q.aux)
 \openout1 = fig_em_cb_05_00_q.aux
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
@@ -522,6 +505,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
+
 (c:/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count311
@@ -560,16 +544,16 @@ L3 programming layer <2026-01-19>
 )
 
 Here is how much of LuaTeX's memory you used:
- 31946 strings out of 476076
+ 31765 strings out of 476076
  100000,1648299 words of node,token memory allocated
  2888 words of node memory still in use:
    50 hlist, 1 vlist, 1 rule, 4 math, 97 glue, 3 kern, 7 glyph, 226 attribute, 4
 8 glue_spec, 226 attribute_list, 2 write, 139 pdf_literal, 4 pdf_colorstack node
 s
    avail lists: 2:36,3:283,4:18,5:22,6:2,7:236,8:2,9:118
- 53879 multiletter control sequences out of 65536+600000
+ 53721 multiletter control sequences out of 65536+600000
  25 fonts using 1345055 bytes
- 102i,7n,101p,397b,726s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,7n,101p,397b,696s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/t
 exlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/202
 5/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
