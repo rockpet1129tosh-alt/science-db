@@ -1,9 +1,11 @@
-# Physics-DB プロジェクト構成
+# Science-DB プロジェクト構成
+
+**注**: このプロジェクトは `physics-db` から `science-db` に改名されました（2026-03-01）
 
 ## 📁 フォルダ構成
 
 ```
-physics-db/
+science-db/
 ├── university_exam/
 │   └── physics-standard/
 │       ├── em_electromagnetism/       # 電磁気学
@@ -12,11 +14,24 @@ physics-db/
 │       ├── td_thermodynamics/          # 熱力学
 │       ├── mp_modern-physics/          # 現代物理
 │       ├── ps_a.tex                    # 親ファイル（答え版）
-│       └── ps_q.tex                    # 親ファイル（問題版）
+│       ├── ps_a.pdf                    # 生成PDF（答え版）
+│       ├── ps_q.tex                    # 親ファイル（問題版）
+│       └── ps_q.pdf                    # 生成PDF（問題版）
 └── scripts/
-    ├── compilation/                    # コンパイルスクリプト
-    └── migration/                      # データ移行・リネームスクリプト
+    ├── compile/                        # コンパイルスクリプト
+    ├── migration/                      # データ移行・リネームスクリプト
+    └── docs/                           # プロジェクトドキュメント
 ```
+
+## 🔄 Git管理ポリシー
+
+**コミット対象:**
+- ✅ **PDFファイル** - 配布用・GitHub上でのプレビュー用として**必ずコミット**
+- ✅ `.tex` ソースファイル
+- ✅ スクリプト・ドキュメント
+
+**コミット除外（中間ファイル）:**
+- ❌ `.log`, `.aux`, `.synctex.gz` - TeXコンパイル時の中間生成物
 
 ## 🏷️ ファイル命名規則
 

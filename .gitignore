@@ -1,0 +1,20 @@
+# LaTeX 中間ファイル（コミット除外）
+*.log
+*.aux
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.out
+*.toc
+*.nav
+*.snm
+
+# PDFは配布用として必ずコミット（除外しない）
+# *.pdf
+
+# エディタ・OS関連
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*~
