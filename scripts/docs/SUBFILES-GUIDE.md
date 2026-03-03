@@ -199,27 +199,37 @@ university_exam/physics-standard/
 
 ## science-db での階層構造
 
-### 🏗️ 標準的な3～4階層構造
+### 🏗️ ラッパー方式（推奨）の階層構造
 
 ```
-ps_q.tex（階層0：全体マスター）
+ps_master.tex（統合エントリ）
+    ↓ PSMODE=q / a で分岐
+
+ps_q.tex / ps_a.tex（保存時コンパイル用ラッパー）
     ↓ \subfile
 
-ps_em_q.tex（階層1：分野マスター）
-    \documentclass[../ps_q.tex]{subfiles}
+ps_em_q.tex / ps_em_a.tex（分野マスター）
+    \documentclass[../ps_q.tex or ../ps_a.tex]{subfiles}
     ↓ \subfile
 
-ps_em_cb_q.tex（階層2：中項目マスター）
-    \documentclass[../../ps_q.tex]{subfiles}
+ps_em_cb_q.tex / ps_em_cb_a.tex（中項目マスター）
+    \documentclass[../../ps_q.tex or ../../ps_a.tex]{subfiles}
     ↓ \subfile
 
-ps_em_cb_01_q.tex（階層3：細目ファイル）
-    \documentclass[../../../ps_q.tex]{subfiles}
+ps_em_cb_01_q.tex / ps_em_cb_01_a.tex（細目ファイル）
+    \documentclass[../../../ps_q.tex or ../../../ps_a.tex]{subfiles}
     ↓ \includegraphics
     
 fig_em_cb_01/fig_em_cb_01_01_q.pdf（図）
     \subfix{fig_em_cb_01/fig_em_cb_01_01_q.pdf}
 ```
+
+### ✅ この構成の意図
+
+- `ps_master.tex`: 全体統合・将来拡張用（明示的に q/a を切替）
+- `ps_q.tex` / `ps_a.tex`: 日常運用の入口（保存時自動コンパイルと相性が良い）
+- 下位 subfiles は q 系は `ps_q.tex`、a 系は `ps_a.tex` を参照
+- これにより「子ファイル直接コンパイル時のモード誤爆」を防止
 
 ### 📐 パス調整の例
 
@@ -237,7 +247,7 @@ fig_em_cb_01/fig_em_cb_01_01_q.pdf（図）
 --
 
 **親ファイルからのコンパイル時:**
-- ps_em_cb_q.tex が `\subfile{01_kirchhoff/ps_em_cb_01_q.tex}` と指定
+- 例えば `ps_em_cb_q.tex` が `\subfile{01_kirchhoff/ps_em_cb_01_q.tex}` と指定
 - subfiles が 親 → 子 の相対パス差分を計算
 - `\subfix{}` が親コンテキストへのパスに自動変換
 
@@ -249,7 +259,8 @@ fig_em_cb_01/fig_em_cb_01_01_q.pdf（図）
 
 ```
 university_exam/physics-standard/
-├── ps_q.tex（最上位親、プリアンブル定義）
+├── ps_master.tex（統合親）
+├── ps_q.tex / ps_a.tex（運用ラッパー）
 ├── em_electromagnetism/
 │   └── circuit-basics/
 │       └── 01_kirchhoff/
@@ -276,13 +287,13 @@ prints/（プリント用フォルダ）
 \end{document}
 ```
 
-**重要**: 複数親を使う場合は、**全てのプリント親が同じ最上位親（`ps_q.tex`）を指定** することで、プリアンブルが一元管理され、子ファイルが確実に動作します。
+**重要**: 複数親を使う場合は、**全てのプリント親が同じ運用ラッパー（`ps_q.tex` か `ps_a.tex`）を指定** することで、設定が一元化され、子ファイルが確実に動作します。
 
 ### 💡 複数親が機能する理由
 
-1. 子ファイルは `\documentclass[../../../ps_q.tex]{subfiles}` で最上位親を指定
-2. 各プリント親も `\documentclass[../ps_q.tex]{subfiles}` で同じ最上位親を指定
-3. **ps_q.tex のプリアンブルが全てのコンテキストで共通** → パッケージ・マクロが統一
+1. 子ファイルは `\documentclass[.../ps_q.tex or .../ps_a.tex]{subfiles}` で運用親を指定
+2. 各プリント親も同じ運用親（q or a）を指定
+3. 運用親は共通 preamble を読むため、全コンテキストで設定が統一
 4. `\subfix{}` が各親からの相対パス差分を自動計算 → 図版が正しく参照される
 
 ---

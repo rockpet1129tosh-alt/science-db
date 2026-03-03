@@ -1,0 +1,71 @@
+\documentclass[fleqn,head_space=14mm,foot_space=14mm,gutter=10mm,fore_edge=10mm,
+    twocolumn,jafontscale=0.92]{jlreq}
+
+\ifdefined\PSMODE
+\else
+    \def\PSMODE{q}
+\fi
+
+\ifx\PSMODE a
+    \newcommand{\mytitle}{【大学入試 物理】 標準演習〈解答編〉 ver.01}
+\else
+    \newcommand{\mytitle}{【大学入試 物理】 標準演習〈問題編〉 ver.01}
+\fi
+
+\input{ps_common_preamble.tex}
+
+\ifx\PSMODE a
+    \setlist[enumerate]{label=\textsf{（\hspace{-.3pt}\arabic*\hspace{-.3pt}）}\, ,
+        topsep=2pt, itemsep=5pt, itemindent=1\zw, leftmargin=1\zw}
+\else
+    \setlist[enumerate]{label=\textsf{（\hspace{-.3pt}\arabic*\hspace{-.3pt}）}\, ,
+        topsep=2pt, itemsep=1.5pt, itemindent=1\zw, leftmargin=1\zw}
+\fi
+
+\title{\mytitle}
+
+\begin{document}
+
+    \maketitle
+    
+    \clearpage
+
+    \ifx\PSMODE a
+        \subfile{me_mechanics/ps_me_a.tex}
+        
+        \clearpage
+
+        \subfile{th_thermodynamics/ps_th_a.tex}
+
+        \clearpage
+
+        \subfile{em_electromagnetism/ps_em_a.tex}
+
+        \clearpage
+
+        \subfile{wa_wave/ps_wa_a.tex}
+
+        \clearpage
+
+        \subfile{mp_modernphysics/ps_mp_a.tex}
+    \else
+        \subfile{me_mechanics/ps_me_q.tex}
+        
+        \clearpage
+
+        \subfile{th_thermodynamics/ps_th_q.tex}
+
+        \clearpage
+
+        \subfile{em_electromagnetism/ps_em_q.tex}
+
+        \clearpage
+
+        \subfile{wa_wave/ps_wa_q.tex}
+
+        \clearpage
+
+        \subfile{mp_modernphysics/ps_mp_q.tex}
+    \fi
+
+\end{document}
