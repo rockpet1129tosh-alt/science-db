@@ -9,11 +9,12 @@
 
 1. [基本概念](#基本概念)
 2. [相対パス問題と \subfix{} の役割](#相対パス問題と-subfix-の役割)
-3. [science-db での階層構造](#science-db-での階層構造)
-4. [複数親運用](#複数親運用)
-5. [個別プリアンブル変更](#個別プリアンブル変更)
-6. [ベストプラクティス](#ベストプラクティス)
-7. [トラブルシューティング](#トラブルシューティング)
+3. [\subfix{} vs \graphicspath{}](#subfixvsgraphicspath比較)
+4. [science-db での階層構造](#science-db-での階層構造)
+5. [複数親運用](#複数親運用)
+6. [個別プリアンブル変更](#個別プリアンブル変更)
+7. [ベストプラクティス](#ベストプラクティス)
+8. [トラブルシューティング](#トラブルシューティング)
 
 ---
 
@@ -81,6 +82,118 @@ university_exam/physics-standard/
 % 親から読み込まれるとき、subfiles が自動で再定義
 % (内部ロジック) 親ファイルからの相対パスを計算 → パス調整
 ```
+
+---
+
+## \subfix{} vs \graphicspath{} 比較
+
+### 📊 両者の概要
+
+相対パス問題を解決する別の方法として、`\graphicspath` を使う選択肢もあります。どちらを選ぶかは、文書構造と複数親対応次第です。
+
+### 📋 機能比較表
+
+| 項目 | \subfix{} | \graphicspath{} |
+|------|----------|-----------------|
+| **実装例** | `\includegraphics{\subfix{fig_em/fig.pdf}}` | `\graphicspath{{fig_em/}{../fig_em/}{...}}` + `\includegraphics{fig.pdf}` |
+| **相対パス自動調整** | ⭐⭐⭐⭐⭐ 自動（subfiles が計算） | ⚠️ 手動（全パターン列挙） |
+| **複数親対応** | ✅ 自動対応（親ごとに計算） | ⚠️ 全パターン列挙が必要 |
+| **階層増加時の保守性** | ⭐⭐⭐⭐⭐ 変更不要 | ⭐⭐ パスリスト更新要 |
+| **パス明示性** | ✅ 相対パスが見える | ❌ ファイル名のみ |
+| **複雑度** | シンプル | 煩雑（特に深い階層） |
+| **学習曲線** | 少し（subfiles理解要） | 易しい |
+| **パフォーマンス** | ⭐⭐⭐⭐⭐ 効率的 | ⭐⭐⭐ 検索額多い |
+
+### 🔍 \graphicspath{} の実装例
+
+```tex
+% 単純なケース: ネスト2階層まで
+\graphicspath{{fig_em_cb_01/}{../fig_em_cb_01/}{./}}
+\includegraphics{fig_em_cb_01_01_q.pdf}
+```
+
+**動作**: 指定されたパスのリストから順番に検索し、最初にマッチするファイルを使用。
+
+### ⚠️ \graphicspath が science-db で課題な理由
+
+#### 1. 階層が深い場合のパスリスト爆発
+
+```tex
+% ps_em_cb_01_q.tex: 親コンテキストに応じた全パターンを列挙する必要がある
+\graphicspath{
+    {fig_em_cb_01/}  % コンテキスト1: 子として直接コンパイル
+    {../fig_em_cb_01/}  % コンテキスト2: ps_em_cb_q.tex から読み込まれる時
+    {../../circuit-basics/01_kirchhoff/fig_em_cb_01/}  % コンテキスト3: ps_em_q.tex から
+    {../../../em_electromagnetism/circuit-basics/01_kirchhoff/fig_em_cb_01/}  % コンテキスト4: ps_q.tex から
+    {../../../../university_exam/physics-standard/em_electromagnetism/circuit-basics/01_kirchhoff/fig_em_cb_01/}  % プリント親からの場合
+}
+```
+
+**代償**:
+- ❌ 全パターンを手動で列挙
+- ❌ 階層増える度に新しいパスを追加
+- ❌ 保守性が低い
+
+#### 2. 複数親運用での複雑性
+
+同じ子ファイルを複数の親から読み込む場合、親の位置が異なるため、パスリストも異なる必要があります：
+
+```tex
+% パターンA: ps_em_cb_q.tex から読み込む場合のパスリスト
+\graphicspath{{../circuit-basics/01_kirchhoff/fig_em_cb_01/}{...}}
+
+% パターンB: prnt_exam_2024_spring.tex から読み込む場合のパスリスト
+% → 全く異なるパスになる
+\graphicspath{{../../../university_exam/physics-standard/em_electromagnetism/circuit-basics/01_kirchhoff/fig_em_cb_01/}{...}}
+```
+
+**問題**: 子ファイルは複数の親コンテキストに対応できない → 複数親運用が困難
+
+#### 3. コンパイル時のパフォーマンス低下
+
+`\graphicspath` は一致するまで全てのパスを検索するため：
+- 古いバージョンの LaTeX では顕著
+- パスリストが長いと検索コストが増加
+- 図版が多い場合に無視できない遅延
+
+### ✅ \graphicspath が活躍する場合
+
+`\graphicspath` が適切なケース：
+
+```tex
+% ケース1: すべての図が共通フォルダにある場合
+\graphicspath{{../../figures/}{./}}
+
+% ケース2: ネストが浅い（1～2階層）
+\documentclass[jlreq]{...}
+\graphicspath{{figures/}}
+\begin{document}
+    \includegraphics{figure.pdf}
+\end{document}
+
+% ケース3: 子ファイルが常に1つの親からのみ呼ばれる場合
+% （単一の固定親ファイル）
+```
+
+### 🎯 選択基準
+
+| 状況 | 推奨 | 理由 |
+|------|------|------|
+| **science-db**（階層深、複数親） | **\subfix{}** | 自動化、保守性高、複数親対応 |
+| シンプルな構造（ネスト浅） | どちらでも可 | \graphicspath でも十分 |
+| 学位論文（固定親） | \graphicspath でも可 | \subfix は不要 |
+| 大規模マルチドキュメント | **\subfix{}** | スケーラビリティ重視 |
+| 将来の拡張可能性考慮 | **\subfix{}** | 親追加時に変更不要 |
+
+### 💡 結論
+
+- **\subfix{}**: subfiles パッケージが提供する機能で、相対パス自動変換を目的として設計
+  - science-db のような複雑な階層・複数親運用に最適
+  - 保守性が高い
+
+- **\graphicspath{}**: 古典的な LaTeX の機能で、図版検索パスを指定
+  - シンプルな文書・単一親に適している
+  - 深い階層・複数親では手管理が煩雑
 
 ---
 
