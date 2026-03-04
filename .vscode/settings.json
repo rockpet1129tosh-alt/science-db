@@ -1,0 +1,5 @@
+{
+    "latex-workshop.latex.watch.files.ignore": [
+        "**/*_master.tex"
+    ]
+}
